@@ -319,7 +319,7 @@ func NewWithRoot(root any) Tree {
 	return &Node{Value: root}
 }
 
-// NewWithRoot Generates new tree with the given root value
+// NewWithRootf Generates new tree with the given root value
 func NewWithRootf(format string, a ...any) Tree {
 	return &Node{Value: fmt.Sprintf(format, a...)}
 }
