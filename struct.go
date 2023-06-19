@@ -86,7 +86,7 @@ func nameTree(tree Tree, v interface{}) error {
 		field := typ.Field(i)
 		fieldValue := val.Field(i)
 		name, skip, omit := getMeta(field.Name, field.Tag)
-		if skip || omit && isEmpty(&fieldValue) {
+		if skip || omit && fieldValue.IsZero() {
 			continue
 		}
 		typ, val, isStruct := getValue(field.Type, &fieldValue)
@@ -131,7 +131,7 @@ func valueTree(tree Tree, v interface{}) error {
 		field := typ.Field(i)
 		fieldValue := val.Field(i)
 		name, skip, omit := getMeta(field.Name, field.Tag)
-		if skip || omit && isEmpty(&fieldValue) {
+		if skip || omit && fieldValue.IsZero() {
 			continue
 		}
 		typ, val, isStruct := getValue(field.Type, &fieldValue)
@@ -161,7 +161,7 @@ func tagTree(tree Tree, v interface{}) error {
 		field := typ.Field(i)
 		fieldValue := val.Field(i)
 		name, skip, omit := getMeta(field.Name, field.Tag)
-		if skip || omit && isEmpty(&fieldValue) {
+		if skip || omit && fieldValue.IsZero() {
 			continue
 		}
 		filteredTag := filterTags(field.Tag)
@@ -192,7 +192,7 @@ func typeTree(tree Tree, v interface{}) error {
 		field := typ.Field(i)
 		fieldValue := val.Field(i)
 		name, skip, omit := getMeta(field.Name, field.Tag)
-		if skip || omit && isEmpty(&fieldValue) {
+		if skip || omit && fieldValue.IsZero() {
 			continue
 		}
 		typ, val, isStruct := getValue(field.Type, &fieldValue)
@@ -223,7 +223,7 @@ func typeSizeTree(tree Tree, v interface{}) error {
 		field := typ.Field(i)
 		fieldValue := val.Field(i)
 		name, skip, omit := getMeta(field.Name, field.Tag)
-		if skip || omit && isEmpty(&fieldValue) {
+		if skip || omit && fieldValue.IsZero() {
 			continue
 		}
 		typ, val, isStruct := getValue(field.Type, &fieldValue)
@@ -254,7 +254,7 @@ func metaTree(tree Tree, v interface{}, fmtFunc FmtFunc) error {
 		field := typ.Field(i)
 		fieldValue := val.Field(i)
 		name, skip, omit := getMeta(field.Name, field.Tag)
-		if skip || omit && isEmpty(&fieldValue) {
+		if skip || omit && fieldValue.IsZero() {
 			continue
 		}
 		typ, val, isStruct := getValue(field.Type, &fieldValue)
